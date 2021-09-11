@@ -3,11 +3,15 @@
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type='text/javascript'>
+	
+	    
       google.load('visualization', '1', {packages:['gauge']});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
       	
       	var lines = [];
+	      const playButton = document.getElementById('play');
+	    playButton.addEventListener('click', togglePlay);
       	
 				 $.ajax({
 				        type: "GET",
@@ -61,12 +65,25 @@
        
 			    }
 			
-			    setInterval(drawGauge, 500);
+			function togglePlay() {
+			  if (video.paused || video.ended) {
+				  	      
+	      		   setInterval(drawGauge, 500);
+			    video.play();
+			  } else {
+			    video.pause();
+			  }
+}    
+	      
+
 			}
       
     </script>
   </head>
   <body>
+	 <video controls class="video" id="video">
+	  <source src="video.mp4" type="video/mp4"></source>
+	</video>
     <div id='chart_div'></div>
   </body>
 </html>
