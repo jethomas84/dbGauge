@@ -67,7 +67,7 @@
 			
 			function togglePlay() {
 			  if (video.paused || video.ended) {
-				  	      
+				  console.log('in here');	      
 	      		   setInterval(drawGauge, 500);
 			    video.play();
 			  } else {
@@ -83,6 +83,7 @@
   <body>
 
     <div id='chart_div'></div>
+	  <div style="clear:both;height:400px;"></div>
 	  	 <video controls class="video" id="video">
 	  <source src="video.mp4" type="video/mp4"></source>
 	</video>
